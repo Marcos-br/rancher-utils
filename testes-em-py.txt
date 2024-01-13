@@ -1,0 +1,89 @@
+AUTH='http://idata.mop.equinix.com.br/api/token-auth'
+AUTH="https://idata.mop.equinix.com.br/api/token-auth/"
+for index in range(0, 10):
+	response = requests.post(AUTH, json= {"username": "admin", "password": "IOEE2AyHJBmlWzDu"})
+	print(response)
+
+
+
+import requests
+import json
+
+
+
+
+url = 'http://idata-api.idata-prod.svc:8000/api/token-auth'
+payload = json.dumps({
+  "password": "IOEE2AyHJBmlWzDu",
+  "username": "admin"
+})
+headers = {
+  'Content-Type': 'application/json'
+}
+
+for index in range(0, 10):
+	print(f"/n/n/nRequisicao {index}")
+	try:
+		response = requests.request("POST", url, headers=headers, data=payload)
+		print(response.text)
+	except requests.exceptions.RequestException as e:
+		print("url=" + url + "erro=" +str(e))
+
+wget 'http://idata-api.idata-prod.svc:8000/api/token-auth'
+
+
+for index in range(0, 10):
+	print(f"/n/n/nRequisicao {index}")
+	try:
+		response = requests.request("POST", url, headers=headers, data=payload)
+	except requests.exceptions.RequestException as e:
+		print("url=" + url + "erro=" +str(e))
+
+
+
+curl --location 'http://idata-api.idata-prod.svc.cluster.local/api/token-auth' \
+--header 'Content-Type: application/json' \
+--data '{
+    "password": "IOEE2AyHJBmlWzDu",
+    "username": "admin"
+}'
+
+
+import http.client
+import json
+
+conn = http.client.HTTPSConnection('http://idata-api.idata-prod.svc:8000')
+conn = http.client.HTTPSConnection('http://10.42.3.207:8000')
+payload = json.dumps({
+  "password": "IOEE2AyHJBmlWzDu",
+  "username": "admin"
+})
+headers = {
+  'Content-Type': 'application/json'
+}
+conn.request("POST", "/api/token-auth/", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+
+
+
+import http.client
+import json
+
+#host = "idata.mop.equinix.com.br"
+host = "idata-api.idata-prod.svc:80"
+
+conn = http.client.HTTPSConnection(host)
+payload = json.dumps({
+  "password": "IOEE2AyHJBmlWzDu",
+  "username": "admin"
+})
+headers = {
+  'Content-Type': 'application/json'
+}
+conn.request("POST", "/api/token-auth/", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+
