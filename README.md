@@ -11,6 +11,17 @@ rke2-prod-cluster-rj.yaml
 get_nodes.sh <prod|dev>
 ```
 
+
+## Listar os configmaps
+```
+get_configmaps.sh <prod|dev>
+```
+
+## Listar as secrets
+```
+get_secrets.sh <prod|dev>
+```
+
 ## Listar os contextos
 ```
 get_contexts.sh <prod|dev>
