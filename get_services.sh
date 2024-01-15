@@ -7,7 +7,7 @@ fi
 if [ -z "$2" ]; then
   namespace="--all-namespaces"
 else
-  namespace="-n $2"
+  namespace="-n $3"
 fi
 
 kubeconfig_file="rke2-$env-cluster-rj.yaml"

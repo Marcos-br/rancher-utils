@@ -11,16 +11,18 @@ fi
 if [ -z "$3" ]; then
   namespace="--all-namespaces"
 else
-  namespace="-n $2"
+  namespace="-n $3"
 fi
 
 kubeconfig_file="rke2-$env-cluster-rj.yaml"
 
 if [ -z "$1" ] || [ "$1" == "-" ]; then
-  kubectl --kubeconfig "$kubeconfig_file" get pods "$namespace"
+  kubectl --kubeconfig "$kubeconfig_file" get pods "$namespace" > lista.txt
 else
-  kubectl --kubeconfig "$kubeconfig_file" get pods "$namespace" | grep $1
+  kubectl --kubeconfig "$kubeconfig_file" get pods "$namespace" | grep $1 > lista.txt
 fi
+
+cat lista.txt
 
 read -p "Digite o nome do pod: " pod_name
 

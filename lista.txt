@@ -1,3 +1,1 @@
-msets-prod            configmap-runbook                                               3      57d
-msets-prod            configmap-runbook-background                                    3      57d
-msets-prod            configmap-runbook-vcenter-settings                              3      57d
+msets-prod            gateway-57d4b9b555-lr9m9                                   1/1     Running            0          5d22h
