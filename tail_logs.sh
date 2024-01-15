@@ -29,9 +29,7 @@ read -p "Digite o nome do pod: " pod_name
 if [ -n "$pod_name" ]; then
   selected_ns=$(cat lista.txt | grep "$pod_name" | head -1 | cut -d ' ' -f 1)
   echo $selected_ns
-  comando="kubectl --kubeconfig "$kubeconfig_file" logs -f -n "$selected_ns" "$pod_name""
-  echo $comando
-  $($comando)
+  kubectl --kubeconfig "$kubeconfig_file" logs -f -n "$selected_ns" "$pod_name"
 fi
 
 
