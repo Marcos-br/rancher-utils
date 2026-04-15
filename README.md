@@ -174,16 +174,6 @@ Lista os pods filtrados, solicita o nome do pod e em seguida pede um termo de bu
 # Depois: O que quer filtrar? ERROR
 ```
 
----
-
-### `old_mdr.sh` — Filtrar logs por "ContractViewSet"
-```
-old_mdr.sh <filtro|-> [prod|dev] [namespace]
-```
-Versão especializada de `grep_log.sh` que filtra automaticamente os logs do pod selecionado buscando pela string `ContractViewSet`.
-
----
-
 ## Deployments, Ingresses e Services
 
 ### `get_deployment.sh` — Listar deployments
