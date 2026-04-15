@@ -16,10 +16,12 @@ fi
 
 kubeconfig_file="rke2-$env-cluster-rj.yaml"
 
-if [ -z "$1" ] || [ "$1" == "-" ]; then
-  kubectl --kubeconfig "$kubeconfig_file" get configmap "$namespace" > lista.txt
+if [ -z "$1" ] || [ "$1" = "-" ]; then
+  kubectl --kubeconfig $kubeconfig_file get configmap $namespace \
+  -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name,STATUS:.status.phase' > lista.txt
 else
-  kubectl --kubeconfig "$kubeconfig_file" get configmap "$namespace" | grep $1 > lista.txt
+  kubectl --kubeconfig $kubeconfig_file get configmap $namespace \
+  -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name,STATUS:.status.phase' | grep $1 > lista.txt
 fi
 
 cat lista.txt
@@ -28,5 +30,5 @@ read -p "Digite o nome da configmap: " configmap_name
 
 if [ -n "$configmap_name" ]; then
   selected_ns=$(cat lista.txt | grep "$configmap_name" | head -1 | cut -d ' ' -f 1)
-  kubectl --kubeconfig "$kubeconfig_file" describe configmap -n "$selected_ns" "$configmap_name"
+  kubectl --kubeconfig $kubeconfig_file describe configmap -n $selected_ns "$configmap_name"
 fi

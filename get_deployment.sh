@@ -16,8 +16,8 @@ fi
 
 kubeconfig_file="rke2-$env-cluster-rj.yaml"
 
-if [ -z "$1" ] || [ "$1" == "-" ]; then
-  kubectl --kubeconfig "$kubeconfig_file" get deployment "$namespace"
+if [ -z "$1" ] || [ "$1" = "-" ]; then
+  kubectl --kubeconfig $kubeconfig_file get deployment $namespace
 else
-  kubectl --kubeconfig "$kubeconfig_file" get deployment "$namespace" | grep $1
+  kubectl --kubeconfig $kubeconfig_file get deployment $namespace | grep $1
 fi

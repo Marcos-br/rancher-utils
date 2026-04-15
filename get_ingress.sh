@@ -16,8 +16,8 @@ fi
 
 kubeconfig_file="rke2-$env-cluster-rj.yaml"
 
-if [ -z "$1" ] || [ "$1" == "-" ]; then
-  kubectl --kubeconfig "$kubeconfig_file" get ingress "$namespace"
+if [ -z "$1" ] || [ "$1" = "-" ]; then
+  kubectl --kubeconfig $kubeconfig_file get ingress $namespace
 else
-  kubectl --kubeconfig "$kubeconfig_file" get ingress "$namespace" | grep $1
+  kubectl --kubeconfig $kubeconfig_file get ingress $namespace | grep $1
 fi

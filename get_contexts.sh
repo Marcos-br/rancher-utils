@@ -6,4 +6,4 @@ fi
 
 kubeconfig_file="rke2-$env-cluster-rj.yaml"
 
-kubectl --kubeconfig "$kubeconfig_file" config get-contexts
+kubectl --kubeconfig $kubeconfig_file config get-contexts
